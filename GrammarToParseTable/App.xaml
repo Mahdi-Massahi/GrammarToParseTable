@@ -7,9 +7,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Order is importent -->
-                <ResourceDictionary Source="DarkTheme1.0.2/Colors.xaml"/>
-                <ResourceDictionary Source="DarkTheme1.0.2/Controls.xaml"/>
-                <ResourceDictionary Source="DarkTheme1.0.2/Windows.xaml"/>
+                <ResourceDictionary Source="DarkTheme1.1/Colors.xaml"/>
+                <ResourceDictionary Source="DarkTheme1.1/Controls.xaml"/>
+                <ResourceDictionary Source="DarkTheme1.1/Windows.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

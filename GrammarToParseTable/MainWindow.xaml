@@ -94,9 +94,9 @@
                     <Button Content="ε" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0"/>
                     <Button Content="Add" Width="50" Margin="2,0,0,0"/>
                 </StackPanel>
-                    <DataGrid Margin="0,5,0,0" Height="100" VerticalScrollBarVisibility="Visible">
-                        
-                    </DataGrid>
+                <DataGrid Margin="0,5,0,0" Height="100" VerticalScrollBarVisibility="Visible">
+
+                </DataGrid>
             </StackPanel>
         </Grid>
         <!--#endregion-->
