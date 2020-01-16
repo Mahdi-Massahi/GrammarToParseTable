@@ -294,4 +294,12 @@
     <SolidColorBrush x:Key="CrollBarRectanglePressedBrush" Color="{StaticResource CrollBarRectanglePressed}"/>
     <!--#endregion-->
 
+    <SolidColorBrush x:Key="DataGridHeaderBackgroundBrush" Color="{StaticResource DarkBackgroundColor}"/>
+    <SolidColorBrush x:Key="DataGridHeaderMouseOverBrush" Color="{StaticResource ButtonMoseOverBackground}"/>
+    <SolidColorBrush x:Key="DataGridHeaderBorderBrush" Color="{StaticResource DisabledBackgroundColor}"/>
+    <SolidColorBrush x:Key="DataGridRowBorderBrush" Color="{StaticResource DisabledBackgroundColor}"/>
+    <SolidColorBrush x:Key="GridLinesBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static DataGrid.FocusBorderBrushKey}" Color="Red"/>
+    
+
 </ResourceDictionary>

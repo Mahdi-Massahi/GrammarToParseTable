@@ -44,6 +44,7 @@ namespace GrammarToParseTable
             right.Add(r3);
 
             Rule r = new Rule(new Nonterminal('S'), right);
+            bindDataGrid();
         }
 
         //Theme Button Events
@@ -93,5 +94,17 @@ namespace GrammarToParseTable
                 DragMove();
         }
         #endregion
+
+
+        void bindDataGrid()
+        {
+            DataGrid_Production.Items.Add(new production() { Number = 0, Production = "Test"});
+        }
+
+        class production
+        {
+            public int Number { get; set; }
+            public String Production { get; set; }
+        }
     }
 }
