@@ -16,3 +16,21 @@ D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\Gra
 D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Colors.baml
 D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Controls.baml
 D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Windows.baml
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\bin\Debug\GrammarToParseTable.exe.config
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\bin\Debug\GrammarToParseTable.exe
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\bin\Debug\GrammarToParseTable.pdb
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.csprojAssemblyReference.cache
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\MainWindow.g.cs
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\App.g.cs
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable_MarkupCompile.cache
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable_MarkupCompile.lref
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\App.baml
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Colors.baml
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Controls.baml
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Windows.baml
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\MainWindow.baml
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.g.resources
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.Properties.Resources.resources
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.csproj.GenerateResource.cache
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.exe
+C:\Users\Anonymous\Source\Repos\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.pdb
