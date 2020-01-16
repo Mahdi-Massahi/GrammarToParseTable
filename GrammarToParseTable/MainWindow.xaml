@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GrammarToParseTable"
         mc:Ignorable="d"
         Style="{StaticResource DarkTheme}"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="475" Width="525">
     <Window.Resources>
        
     </Window.Resources>
@@ -97,12 +97,20 @@
                     <Button x:Name="Button_AddEpsilonToGrammar" Content="ε" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0" Click="Button_AddEpsilonToGrammar_Click"/>
                     <Button x:Name="Button_AddNewGrammar" Content="Add" Width="50" Margin="2,0,0,0" Click="Button_AddNewGrammar_Click"/>
                 </StackPanel>
-                <DataGrid x:Name="DataGrid_Production" Margin="0,5,0,0" IsReadOnly="True" Height="100" VerticalScrollBarVisibility="Visible">
+                <DataGrid x:Name="DataGrid_Production" Margin="0,5,0,0" IsReadOnly="True" Height="150" VerticalScrollBarVisibility="Visible" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
                         <DataGridTextColumn Binding="{Binding Production}" Header=" Production "/>
                     </DataGrid.Columns>
                 </DataGrid>
+                <Button x:Name="Button_Simpify" Content="Simpify" Margin="0,5,0,5" Click="Button_Simpify_Click"/>
+                <DataGrid x:Name="DataGrid_SimplifiedProduction" IsReadOnly="True" Height="150" VerticalScrollBarVisibility="Visible" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
+                        <DataGridTextColumn Binding="{Binding Production}" Header=" Simpilified Production "/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="Button_GenerateParseTable" Content="Generate parse table" Margin="0,5,0,0" Click="Button_GenerateParseTable_Click"/>
             </StackPanel>
         </Grid>
         <!--#endregion-->

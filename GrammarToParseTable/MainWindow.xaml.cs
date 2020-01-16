@@ -76,9 +76,25 @@ namespace GrammarToParseTable
 
         List<Rule> rules = new List<Rule>();
 
+        /// <summary>
+        /// Adds new rule to datagrid
+        /// </summary>
+        /// <param name="r"></param>
         void bindDataGrid(Rule r)
         {
             DataGrid_Production.Items.Add(new production() { Number = rules.Count(), Production = r.ToString() });
+        }
+
+        /// <summary>
+        /// Clears the datagrid and adds rules to it
+        /// </summary>
+        /// <param name="rs">List of rules</param>
+        void bindDataGrid(List<Rule> rs)
+        {
+            DataGrid_SimplifiedProduction.Items.Clear();
+            int i = 1;
+            foreach (Rule rule in rs)
+                DataGrid_SimplifiedProduction.Items.Add(new production() { Number = i++, Production = rule.ToString() });
         }
 
         class production
@@ -87,6 +103,11 @@ namespace GrammarToParseTable
             public String Production { get; set; }
         }
 
+        /// <summary>
+        /// Add new rule to rules and update datagrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_AddNewGrammar_Click(object sender, RoutedEventArgs e)
         {
             Nonterminal left = null;
@@ -139,6 +160,39 @@ namespace GrammarToParseTable
         private void Button_AddOrToGrammer_Click(object sender, RoutedEventArgs e)
         {
             TextBox_GrammarRights.Text += " | ";
+        }
+
+        /// <summary>
+        /// Simplyfies rules
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Simpify_Click(object sender, RoutedEventArgs e)
+        {
+            List<Rule> simplified_Rules = new List<Rule>();
+
+            foreach (Rule rule in rules)
+            {
+                Nonterminal left = rule.left;
+                foreach (List<Symbol> right in rule.right)
+                {
+                    List<List<Symbol>> r = new List<List<Symbol>>();
+                    if (/*Check if rule was not added before*/true)
+                    {
+                        r.Add(right);
+                        simplified_Rules.Add(new Rule(left, r));
+                    }
+                }
+            }
+
+            rules.Clear();
+            rules = simplified_Rules;
+            bindDataGrid(rules);
+        }
+
+        private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
+        {
+            // you've got the rules
         }
     }
 }
