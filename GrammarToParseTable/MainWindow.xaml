@@ -8,7 +8,7 @@
         Style="{StaticResource DarkTheme}"
         Title="MainWindow" Height="350" Width="525">
     <WindowChrome.WindowChrome>
-        <WindowChrome 
+        <WindowChrome   
             CaptionHeight="0"
             ResizeBorderThickness="5"
             CornerRadius="0"
