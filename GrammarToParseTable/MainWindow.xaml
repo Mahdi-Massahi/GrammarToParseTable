@@ -97,7 +97,7 @@
                 <DataGrid Margin="0,5,0,0" Height="100" VerticalScrollBarVisibility="Visible">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header=" #"/>
-                        <DataGridTextColumn Header=""/>
+                        <DataGridTextColumn Header=" Production"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
