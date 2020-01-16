@@ -79,6 +79,7 @@
     <Compile Include="Grammer\First.cs" />
     <Compile Include="Grammer\Follow.cs" />
     <Compile Include="Grammer\Nonterminal.cs" />
+    <Compile Include="Grammer\ParseTable.cs" />
     <Compile Include="Grammer\Rule.cs" />
     <Compile Include="Grammer\Symbol.cs" />
     <Compile Include="Grammer\Terminal.cs" />

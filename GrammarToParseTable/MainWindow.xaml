@@ -87,7 +87,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel>
-                <Label Content="- Inser a new rule"/>
+                <Label Content="- Insert a new rule"/>
                 <Label Content="(uppercase as Terminal and lowercase as Nonterminal)" FontSize="8" Margin="8,-12,0,0"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBox_GrammarLeft" Width="25"/>
