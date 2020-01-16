@@ -2943,7 +2943,7 @@
                                         <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" 
                                                    Orientation="Vertical" 
                                                    Grid.Row="1" 
-                                                   Margin="0,0,0,-1"
+                                                   Margin="0,0,0,0"
                                                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" 
                                                    Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
                                                    ViewportSize="{TemplateBinding ViewportHeight}"/>
