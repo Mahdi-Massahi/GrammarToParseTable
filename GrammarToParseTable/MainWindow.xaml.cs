@@ -24,27 +24,6 @@ namespace GrammarToParseTable
         public MainWindow()
         {
             InitializeComponent();
-
-            List<Symbol> r1 = new List<Symbol>();
-            r1.Add(new Terminal('b'));
-            r1.Add(new Terminal('a'));
-            r1.Add(new Terminal('a'));
-
-            List<Symbol> r2 = new List<Symbol>();
-            r2.Add(new Terminal('a'));
-            r2.Add(new Terminal('b'));
-            r2.Add(new Nonterminal('A'));
-
-            List<Symbol> r3 = new List<Symbol>();
-            r3.Add(new Terminal('ε'));
-
-            List<List<Symbol>> right = new List<List<Symbol>>();
-            right.Add(r1);
-            right.Add(r2);
-            right.Add(r3);
-
-            Rule r = new Rule(new Nonterminal('S'), right);
-            bindDataGrid();
         }
 
         //Theme Button Events
@@ -96,15 +75,66 @@ namespace GrammarToParseTable
         #endregion
 
 
-        void bindDataGrid()
+        void bindDataGrid(Rule r)
         {
-            DataGrid_Production.Items.Add(new production() { Number = 0, Production = "Test"});
+
+            DataGrid_Production.Items.Add(new production() { Number = 0, Production = r.ToString() });
         }
 
         class production
         {
             public int Number { get; set; }
             public String Production { get; set; }
+        }
+
+        private void Button_AddNewGrammar_Click(object sender, RoutedEventArgs e)
+        {
+            Nonterminal left = null;
+            List<List<Symbol>> rights = new List<List<Symbol>>();
+
+            // Handeling LeftSide
+            if (TextBox_GrammarLeft.Text != "")
+                if (TextBox_GrammarLeft.Text.ToCharArray().Length > 1)
+                    throw new Exception("Left value cannot have more than one symbol.");
+                else
+                    left = new Nonterminal(TextBox_GrammarLeft.Text.ToCharArray()[0]);
+            else
+                throw new Exception("Value cannot be null.");
+
+            // Handeling RightSide
+            if (TextBox_GrammarRights.Text != "")
+            {
+                List<Symbol> symbols = new List<Symbol>();
+
+                String[] vars = TextBox_GrammarRights.Text.Replace(" ", string.Empty).Replace("\t", string.Empty).Split('|');
+                foreach (String var in vars)
+                {
+                    foreach (char symbol in var)
+                    {
+                        if (Char.IsUpper(symbol))
+                            symbols.Add(new Nonterminal(symbol));
+                        else
+                            symbols.Add(new Terminal(symbol));
+                    }
+                    rights.Add(symbols);
+                    symbols = new List<Symbol>();
+                }
+            }
+            else
+                throw new Exception("Value cannot be null.");
+
+            Rule r = new Rule(left, rights);
+            bindDataGrid(r);
+        }
+
+        private void Button_AddEpsilonToGrammar_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_GrammarRights.Text += " ε ";
+        }
+
+        private void Button_AddOrToGrammer_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox_GrammarRights.Text += " | ";
         }
     }
 }

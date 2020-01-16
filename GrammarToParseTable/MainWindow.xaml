@@ -90,21 +90,18 @@
                 <Label Content="- Inser a new rule"/>
                 <Label Content="(uppercase as Terminal and lowercase as Nonterminal)" FontSize="8" Margin="8,-12,0,0"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Width="25"/>
+                    <TextBox x:Name="TextBox_GrammarLeft" Width="25"/>
                     <Label Content=" ➝ "/>
-                    <TextBox Width="100"/>
-                    <Button Content="|" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0"/>
-                    <Button Content="ε" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0"/>
-                    <Button Content="Add" Width="50" Margin="2,0,0,0"/>
+                    <TextBox x:Name="TextBox_GrammarRights" Width="100"/>
+                    <Button x:Name="Button_AddOrToGrammer" Content="|" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0" Click="Button_AddOrToGrammer_Click"/>
+                    <Button x:Name="Button_AddEpsilonToGrammar" Content="ε" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0" Click="Button_AddEpsilonToGrammar_Click"/>
+                    <Button x:Name="Button_AddNewGrammar" Content="Add" Width="50" Margin="2,0,0,0" Click="Button_AddNewGrammar_Click"/>
                 </StackPanel>
-                <DataGrid x:Name="DataGrid_Production" Margin="0,5,0,0" Height="100" VerticalScrollBarVisibility="Visible">
+                <DataGrid x:Name="DataGrid_Production" Margin="0,5,0,0" IsReadOnly="True" Height="100" VerticalScrollBarVisibility="Visible">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
                         <DataGridTextColumn Binding="{Binding Production}" Header=" Production "/>
                     </DataGrid.Columns>
-
-                <ItemsControl Height="5"/>
-                <ItemsControl Height="5"/>
                 </DataGrid>
             </StackPanel>
         </Grid>
