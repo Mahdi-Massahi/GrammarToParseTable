@@ -74,11 +74,11 @@ namespace GrammarToParseTable
         }
         #endregion
 
+        List<Rule> rules = new List<Rule>();
 
         void bindDataGrid(Rule r)
         {
-
-            DataGrid_Production.Items.Add(new production() { Number = 0, Production = r.ToString() });
+            DataGrid_Production.Items.Add(new production() { Number = rules.Count(), Production = r.ToString() });
         }
 
         class production
@@ -109,21 +109,25 @@ namespace GrammarToParseTable
                 String[] vars = TextBox_GrammarRights.Text.Replace(" ", string.Empty).Replace("\t", string.Empty).Split('|');
                 foreach (String var in vars)
                 {
-                    foreach (char symbol in var)
+                    if (var != "")
                     {
-                        if (Char.IsUpper(symbol))
-                            symbols.Add(new Nonterminal(symbol));
-                        else
-                            symbols.Add(new Terminal(symbol));
+                        foreach (char symbol in var)
+                        {
+                            if (Char.IsUpper(symbol))
+                                symbols.Add(new Nonterminal(symbol));
+                            else
+                                symbols.Add(new Terminal(symbol));
+                        }
+                        rights.Add(symbols);
+                        symbols = new List<Symbol>();
                     }
-                    rights.Add(symbols);
-                    symbols = new List<Symbol>();
                 }
             }
             else
                 throw new Exception("Value cannot be null.");
 
             Rule r = new Rule(left, rights);
+            rules.Add(r);
             bindDataGrid(r);
         }
 
