@@ -13,6 +13,6 @@ D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\Gra
 D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.csproj.GenerateResource.Cache
 D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.exe
 D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\GrammarToParseTable.pdb
-D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme1.1\Colors.baml
-D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme1.1\Controls.baml
-D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme1.1\Windows.baml
+D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Colors.baml
+D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Controls.baml
+D:\Project\2020-01-16 13-02 Compiler-GrammarToParseTable\GrammarToParseTable\GrammarToParseTable\obj\Debug\DarkTheme\Windows.baml

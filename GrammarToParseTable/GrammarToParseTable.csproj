@@ -56,15 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="DarkTheme1.1\Colors.xaml">
+    <Page Include="DarkTheme\Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DarkTheme1.1\Controls.xaml">
+    <Page Include="DarkTheme\Controls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DarkTheme1.1\Windows.xaml">
+    <Page Include="DarkTheme\Windows.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -76,10 +76,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Grammer1.1\Nonterminal.cs" />
-    <Compile Include="Grammer1.1\Rule.cs" />
-    <Compile Include="Grammer1.1\Symbol.cs" />
-    <Compile Include="Grammer1.1\Terminal.cs" />
+    <Compile Include="Grammer\Nonterminal.cs" />
+    <Compile Include="Grammer\Rule.cs" />
+    <Compile Include="Grammer\Symbol.cs" />
+    <Compile Include="Grammer\Terminal.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,8 +113,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="DarkTheme1.1\SourceCode.txt" />
-    <Resource Include="DarkTheme1.1\VersionHistory.txt" />
+    <Resource Include="DarkTheme\SourceCode.txt" />
+    <Resource Include="DarkTheme\VersionHistory.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

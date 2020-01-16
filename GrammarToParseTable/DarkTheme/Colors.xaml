@@ -1,0 +1,297 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GrammarToParseTable">
+
+    <!--#region         Window Colors           -->
+    <!--Background-->
+    <Color x:Key="WindowBackgroundDark">#2D2D30</Color>
+    <SolidColorBrush x:Key="WindowBackgroundDarkBrush" Color="{StaticResource WindowBackgroundDark}"/>
+    <Color x:Key="WindowBorderBlue">#007ACC</Color>
+    <SolidColorBrush x:Key="WindowBorderBlueBrush" Color="{StaticResource WindowBorderBlue}"/>
+    <Color x:Key="WindowBorderOrange">#CA5100</Color>
+    <SolidColorBrush x:Key="WindowBorderOrangeBrush" Color="{StaticResource WindowBorderOrange}"/>
+    <!--Forground-->
+    <Color x:Key="WindowForgroundLight">#F1F1F1</Color>
+    <SolidColorBrush x:Key="WindowForgroundLightBrush" Color="{StaticResource WindowForgroundLight}"/>
+    <Color x:Key="WindowDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="WindowDisabledForgroundBrush" Color="{StaticResource WindowDisabledForground}"/>
+    <!--#endregion-->
+
+    <!--#region         Button Colors           -->
+    <!--Forground-->
+    <Color x:Key="ButtonForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="ButtonForgroundBrush" Color="{StaticResource ButtonForground}"/>
+    <Color x:Key="ButtonDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="ButtonDisabledForgroundBrush" Color="{StaticResource ButtonDisabledForground}"/>
+    <Color x:Key="ButtonMoseOverForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="ButtonMoseOverForgroundBrush" Color="{StaticResource ButtonMoseOverForground}"/>
+
+    <!--Border-->
+    <Color x:Key="ButtonBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="{StaticResource ButtonBorder}"/>
+
+    <!--Background-->
+    <Color x:Key="ButtonBackground">#1A1A1A</Color>
+    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource ButtonBackground}"/>
+    <Color x:Key="ButtonDisabledBackground">#393939</Color>
+    <SolidColorBrush x:Key="ButtonDisabledBackgroundBrush" Color="{StaticResource ButtonDisabledBackground}"/>
+    <Color x:Key="ButtonMoseOverBackground">#3E3E40</Color>
+    <SolidColorBrush x:Key="ButtonMoseOverBackgroundBrush" Color="{StaticResource ButtonMoseOverBackground}"/>
+    <Color x:Key="ButtonPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="ButtonPressedBackgroundBrush" Color="{StaticResource ButtonPressedBackground}"/>
+    <!--#endregion-->
+
+    <!--#region         CheckBox Colors           -->
+    <!--Forground-->
+    <Color x:Key="CheckBoxForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="CheckBoxForgroundBrush" Color="{StaticResource CheckBoxForground}"/>
+    <Color x:Key="CheckBoxDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="CheckBoxDisabledForgroundBrush" Color="{StaticResource CheckBoxDisabledForground}"/>
+
+    <!--Background-->
+    <Color x:Key="CheckBoxBackground">#1A1A1A</Color>
+    <SolidColorBrush x:Key="CheckBoxBackgroundBrush" Color="{StaticResource CheckBoxBackground}"/>
+    <Color x:Key="CheckBoxBackgroundMouseOver">#3E3E40</Color>
+    <SolidColorBrush x:Key="CheckBoxBackgroundMouseOverBrush" Color="{StaticResource CheckBoxBackgroundMouseOver}"/>
+    <Color x:Key="CheckMarkPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="CheckMarkPressedBackgroundBrush" Color="{StaticResource CheckMarkPressedBackground}"/>
+    <Color x:Key="CheckBoxDiabledBackround">#393939</Color>
+    <SolidColorBrush x:Key="CheckBoxDiabledBackroundBrush" Color="{StaticResource CheckBoxDiabledBackround}"/>
+
+    <!--Border-->
+    <Color x:Key="CheckBoxBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="CheckBoxBorderBrush" Color="{StaticResource CheckBoxBorder}"/>
+    <Color x:Key="CheckBoxBorderMouseOver">#FF222222</Color>
+    <SolidColorBrush x:Key="CheckBoxBorderMouseOverBrush" Color="{StaticResource CheckBoxBorderMouseOver}"/>
+
+    <!--CheckMark-->
+    <Color x:Key="CheckBoxCheckMark">#E5E5E5</Color>
+    <SolidColorBrush x:Key="CheckBoxCheckMarkBrush" Color="{StaticResource CheckBoxCheckMark}"/>
+    <Color x:Key="CheckBoxCheckMarkMouseOver">#E5E5E5</Color>
+    <SolidColorBrush x:Key="CheckBoxCheckMarkMouseOverBrush" Color="{StaticResource CheckBoxCheckMarkMouseOver}"/>
+    <Color x:Key="CheckBoxCheckMarkRec">#E5E5E5</Color>
+    <SolidColorBrush x:Key="CheckBoxCheckMarkRecBrush" Color="{StaticResource CheckBoxCheckMarkRec}"/>
+    <Color x:Key="CheckBoxDisabledCheckMark">#FF707070</Color>
+    <SolidColorBrush x:Key="CheckBoxDisabledCheckMarkBrush" Color="{StaticResource CheckBoxDisabledCheckMark}"/>
+
+    <!--#endregion-->
+
+    <!--#region         RadioButton Colors           -->
+    <!--Forground-->
+    <Color x:Key="RadioButtonForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="RadioButtonForgroundBrush" Color="{StaticResource RadioButtonForground}"/>
+    <Color x:Key="RadioButtonDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="RadioButtonDisabledForgroundBrush" Color="{StaticResource RadioButtonDisabledForground}"/>
+
+    <!--Background-->
+    <Color x:Key="RadioButtonBackground">#1A1A1A</Color>
+    <SolidColorBrush x:Key="RadioButtonBackgroundBrush" Color="{StaticResource RadioButtonBackground}"/>
+    <Color x:Key="RadioButtonBackgroundMouseOver">#3E3E40</Color>
+    <SolidColorBrush x:Key="RadioButtonBackgroundMouseOverBrush" Color="{StaticResource RadioButtonBackgroundMouseOver}"/>
+    <Color x:Key="CircleMarkPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="CircleMarkPressedBackgroundBrush" Color="{StaticResource CheckMarkPressedBackground}"/>
+    <Color x:Key="RadioButtonDiabledBackround">#393939</Color>
+    <SolidColorBrush x:Key="RadioButtonDiabledBackroundBrush" Color="{StaticResource RadioButtonDiabledBackround}"/>
+
+    <!--Border-->
+    <Color x:Key="RadioButtonBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="RadioButtonBorderBrush" Color="{StaticResource RadioButtonBorder}"/>
+    <Color x:Key="RadioButtonBorderMouseOver">#FF222222</Color>
+    <SolidColorBrush x:Key="RadioButtonBorderMouseOverBrush" Color="{StaticResource RadioButtonBorderMouseOver}"/>
+
+    <!--CheckMark-->
+    <Color x:Key="RadioButtonCheckMark">#E5E5E5</Color>
+    <SolidColorBrush x:Key="RadioButtonCheckMarkBrush" Color="{StaticResource RadioButtonCheckMark}"/>
+    <Color x:Key="RadioButtonCheckMarkMouseOver">#E5E5E5</Color>
+    <SolidColorBrush x:Key="RadioButtonCheckMarkMouseOverBrush" Color="{StaticResource RadioButtonCheckMarkMouseOver}"/>
+    <Color x:Key="RadioButtonCheckMarkRec">#E5E5E5</Color>
+    <SolidColorBrush x:Key="RadioButtonCheckMarkRecBrush" Color="{StaticResource RadioButtonCheckMarkRec}"/>
+    <Color x:Key="RadioButtonDisabledCheckMark">#FF707070</Color>
+    <SolidColorBrush x:Key="RadioButtonDisabledCheckMarkBrush" Color="{StaticResource RadioButtonDisabledCheckMark}"/>
+
+    <!--#endregion-->
+
+    <!--#region         TextBox Colors           -->
+    <!--Forground-->
+    <Color x:Key="TextBoxForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="TextBoxForgroundBrush" Color="{StaticResource TextBoxForground}"/>
+    <Color x:Key="TextBoxDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="TextBoxDisabledForgroundBrush" Color="{StaticResource TextBoxDisabledForground}"/>
+
+    <!--Border-->
+    <Color x:Key="TextBoxBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="{StaticResource TextBoxBorder}"/>
+    <Color x:Key="TextBoxFocusedBorder">#007ACC</Color>
+    <SolidColorBrush x:Key="TextBoxFocusedBorderBrush" Color="{StaticResource TextBoxFocusedBorder}"/>
+
+    <!--Background-->
+    <Color x:Key="TextBoxBackground">#1A1A1A</Color>
+    <SolidColorBrush x:Key="TextBoxBackgroundBrush" Color="{StaticResource TextBoxBackground}"/>
+    <Color x:Key="TextBoxDisabledBackground">#393939</Color>
+    <SolidColorBrush x:Key="TextBoxDisabledBackgroundBrush" Color="{StaticResource TextBoxDisabledBackground}"/>
+    <Color x:Key="TextBoxMouseOverBackground">#3E3E40</Color>
+    <SolidColorBrush x:Key="TextBoxMouseOverBackgroundBrush" Color="{StaticResource TextBoxBackground}"/>
+
+    <!--Selection Text-->
+    <Color x:Key="TextBoxSelection">#007ACC</Color>
+    <SolidColorBrush x:Key="TextBoxSelectionBrush" Color="{StaticResource TextBoxSelection}"/>
+
+    <!--#endregion-->
+
+    <!--#region         GroupBox        -->
+    <!--Border-->
+    <Color x:Key="GroupBoxBorder">#3E3E42</Color>
+    <SolidColorBrush x:Key="GroupBoxBorderBrush" Color="{StaticResource GroupBoxBorder}"/>
+    <!--#endregion -->
+
+    <!--#region         ToggleButton        -->
+    <!--Border-->
+    <Color x:Key="ToggleButtonBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="{StaticResource ToggleButtonBorder}"/>
+
+    <!--Background-->
+    <Color x:Key="ToggleButtonBackground">#1A1A1A</Color>
+    <SolidColorBrush x:Key="ToggleButtonBackgroundBrush" Color="{StaticResource ToggleButtonBackground}"/>
+    <Color x:Key="ToggleButtonDisabledBackground">#393939</Color>
+    <SolidColorBrush x:Key="ToggleButtonDisabledBackgroundBrush" Color="{StaticResource ToggleButtonDisabledBackground}"/>
+    <Color x:Key="ToggleButtonMoseOverBackground">#3E3E40</Color>
+    <SolidColorBrush x:Key="ToggleButtonMoseOverBackgroundBrush" Color="{StaticResource ToggleButtonMoseOverBackground}"/>
+    <Color x:Key="ToggleButtonPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="ToggleButtonPressedBackgroundBrush" Color="{StaticResource ToggleButtonPressedBackground}"/>
+    <!--#endregion-->
+
+    <!--#region         ComboBox        -->
+    <!--Background-->
+    <!--                Enabaled-->
+    <Color x:Key="ComboBoxBackground">#1A1A1A</Color>
+    <SolidColorBrush x:Key="ComboBoxBackgroundBrush" Color="{StaticResource ComboBoxBackground}"/>
+    <!--                Disabled-->
+    <Color x:Key="ComboBoxDisabledBackground">#393939</Color>
+    <SolidColorBrush x:Key="ComboBoxDisabledBackgroundBrush" Color="{StaticResource ComboBoxDisabledBackground}"/>
+    <!--                MouseOver-->
+    <Color x:Key="ComboBoxMouseOverBackground">#3E3E40</Color>
+    <SolidColorBrush x:Key="ComboBoxMouseOverBackgroundBrush" Color="{StaticResource ComboBoxMouseOverBackground}"/>
+    <Color x:Key="ComboBoxMarkMouseOverBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="ComboBoxMarkMouseOverBackgroundBrush" Color="{StaticResource ComboBoxMarkMouseOverBackground}"/>
+    <!--                Pressed-->
+    <Color x:Key="ComboBoxPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="ComboBoxPressedBackgroundBrush" Color="{StaticResource ComboBoxPressedBackground}"/>
+
+
+    <!--Forground-->
+    <!--                Enabaled-->
+
+    <!--                Disabled-->
+
+    <!--                MouseOver-->
+
+    <!--                MouseDown-->
+
+
+    <!--Border-->
+    <!--                Enabaled-->
+    <Color x:Key="ComboBoxBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="{StaticResource ComboBoxBorder}"/>
+    <!--                Disabled-->
+
+    <!--                MouseOver-->
+    <Color x:Key="ComboBoxMouseOverBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="ComboBoxMouseOverBorderBrush" Color="{StaticResource ComboBoxMouseOverBorder}"/>
+    <!--                MouseDown-->
+
+    <!--Mark-->
+    <!--                Enabaled-->
+    <Color x:Key="ComboBoxMark">#999999</Color>
+    <SolidColorBrush x:Key="ComboBoxMarkBrush" Color="{StaticResource ComboBoxMark}"/>
+    <!--                Disabled-->
+
+    <!--                MouseOver-->
+
+    <!--                MouseDown-->
+
+
+
+    <!--#endregion-->
+
+    <!--#region         ComboBoxItem        -->
+    <!--Forground-->
+    <Color x:Key="ComboBoxItemForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="ComboBoxItemForgroundBrush" Color="{StaticResource ComboBoxItemForground}"/>
+    <Color x:Key="ComboBoxItemDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="ComboBoxItemDisabledForgroundBrush" Color="{StaticResource ComboBoxItemDisabledForground}"/>
+    <Color x:Key="ComboBoxItemMoseOverForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="ComboBoxItemMoseOverForgroundBrush" Color="{StaticResource ComboBoxItemMoseOverForground}"/>
+
+    <!--Border-->
+    <Color x:Key="ComboBoxItemBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="ComboBoxItemBorderBrush" Color="{StaticResource ComboBoxItemBorder}"/>
+
+    <!--Background-->
+    <Color x:Key="ComboBoxItemBackground">#1B1B1D</Color>
+    <SolidColorBrush x:Key="ComboBoxItemBackgroundBrush" Color="{StaticResource ComboBoxItemBackground}"/>
+    <Color x:Key="ComboBoxItemDisabledBackground">#393939</Color>
+    <SolidColorBrush x:Key="ComboBoxItemDisabledBackgroundBrush" Color="{StaticResource ComboBoxItemDisabledBackground}"/>
+    <Color x:Key="ComboBoxItemMoseOverBackground">#3E3E40</Color>
+    <SolidColorBrush x:Key="ComboBoxItemMoseOverBackgroundBrush" Color="{StaticResource ComboBoxItemMoseOverBackground}"/>
+    <Color x:Key="ComboBoxItemPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="ComboBoxItemPressedBackgroundBrush" Color="{StaticResource ComboBoxItemPressedBackground}"/>
+    <Color x:Key="ComboBoxItemSelectedBackground">#3F3F46</Color>
+    <SolidColorBrush x:Key="ComboBoxItemSelectedBackgroundBrush" Color="{StaticResource ComboBoxItemSelectedBackground}"/>
+    
+    <!--#endregion-->
+    
+    <!--#region         ProgressBar         -->
+    <Color x:Key="ProgressBarForground">#007ACC</Color>
+    <SolidColorBrush x:Key="ProgressBarForgroundBrush" Color="{StaticResource ProgressBarForground}"/>
+    <!--#endregion-->
+    
+    <!--#region         RichTextBox         -->
+    <!--Forground-->
+    <Color x:Key="RichTextBoxForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="RichTextBoxForgroundBrush" Color="{StaticResource RichTextBoxForground}"/>
+    <Color x:Key="RichTextBoxDisabledForground">#919191</Color>
+    <SolidColorBrush x:Key="RichTextBoxDisabledForgroundBrush" Color="{StaticResource RichTextBoxDisabledForground}"/>
+    <Color x:Key="RichTextBoxMoseOverForground">#F1F1F1</Color>
+    <SolidColorBrush x:Key="RichTextBoxMoseOverForgroundBrush" Color="{StaticResource RichTextBoxMoseOverForground}"/>
+
+    <!--Border-->
+    <Color x:Key="RichTextBoxBorder">#FF222222</Color>
+    <SolidColorBrush x:Key="RichTextBoxBorderBrush" Color="{StaticResource RichTextBoxBorder}"/>
+
+    <!--Background-->
+    <Color x:Key="RichTextBoxBackground">#1E1E1E</Color>
+    <SolidColorBrush x:Key="RichTextBoxBackgroundBrush" Color="{StaticResource RichTextBoxBackground}"/>
+    <Color x:Key="RichTextBoxDisabledBackground">#393939</Color>
+    <SolidColorBrush x:Key="RichTextBoxDisabledBackgroundBrush" Color="{StaticResource RichTextBoxDisabledBackground}"/>
+    <Color x:Key="RichTextBoxMoseOverBackground">#3E3E40</Color>
+    <SolidColorBrush x:Key="RichTextBoxMoseOverBackgroundBrush" Color="{StaticResource RichTextBoxMoseOverBackground}"/>
+    <Color x:Key="RichTextBoxPressedBackground">#007ACC</Color>
+    <SolidColorBrush x:Key="RichTextBoxPressedBackgroundBrush" Color="{StaticResource RichTextBoxPressedBackground}"/>
+    <!--#endregion-->
+    
+    <!--#region         ScrollBar       -->
+    <!--Background-->
+    <Color x:Key="ScrolBarBackground">#3E3E42</Color>
+    <SolidColorBrush x:Key="ScrolBarBackgroundBrush" Color="{StaticResource ScrolBarBackground}"/>
+    <!--Buttons Background-->
+    <Color x:Key="ScrolBarButtonBackground">#3E3E42</Color>
+    <SolidColorBrush x:Key="ScrolBarButtonBackgroundBrush" Color="{StaticResource ScrolBarButtonBackground}"/>
+    <!--Arrows Fill-->
+    <Color x:Key="ScrollBarArrowDiabled">#555558</Color>
+    <SolidColorBrush x:Key="ScrollBarArrowDiabledBrush" Color="{StaticResource ScrollBarArrowDiabled}"/>
+    <Color x:Key="ScrollBarArrow">#686868</Color>
+    <SolidColorBrush x:Key="ScrollBarArrowBrush" Color="{StaticResource ScrollBarArrow}"/>
+    <Color x:Key="ScrollBarMouseOver">#007ACC</Color>
+    <SolidColorBrush x:Key="ScrollBarMouseOverBrush" Color="{StaticResource ScrollBarMouseOver}"/>
+    <Color x:Key="ScrollBarPressed">#F1F1F1</Color>
+    <SolidColorBrush x:Key="ScrollBarPressedBrush" Color="{StaticResource ScrollBarPressed}"/>
+    <!--Slider Rectangle-->
+    <Color x:Key="ScrolBarRectangle">#686868</Color>
+    <SolidColorBrush x:Key="ScrolBarRectangleBrush" Color="{StaticResource ScrolBarRectangle}"/>
+    <Color x:Key="ScrolBarRectangleMouseOver">#9E9E9E</Color>
+    <SolidColorBrush x:Key="ScrolBarRectangleMouseOverBrush" Color="{StaticResource ScrolBarRectangleMouseOver}"/>
+    <Color x:Key="CrollBarRectanglePressed">#F1F1F1</Color>
+    <SolidColorBrush x:Key="CrollBarRectanglePressedBrush" Color="{StaticResource CrollBarRectanglePressed}"/>
+    <!--#endregion-->
+
+</ResourceDictionary>
