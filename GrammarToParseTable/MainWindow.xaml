@@ -32,7 +32,7 @@
                 <!--Title-->
                 <Label 
                 x:Name="title_Window"
-                Content="Grammar To Parse Table (v1.0)" 
+                Content="Grammar To Parse Table (v1.1)" 
                 Grid.Column="1" 
                 Background="Transparent" 
                 VerticalAlignment="Center" 

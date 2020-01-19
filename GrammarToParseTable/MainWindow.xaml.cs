@@ -76,7 +76,6 @@ namespace GrammarToParseTable
         #endregion
 
         List<Rule> rules = new List<Rule>();
-        Rule currentSelectedRule = null;
 
         /// <summary>
         /// Adds new rule to datagrid
@@ -172,8 +171,12 @@ namespace GrammarToParseTable
                     throw new Exception("Value cannot be null.");
 
                 Rule r = new Rule(left, rights);
-                rules.Add(r);
-                bindDataGrid(rules);
+                // apply a simple duplex checking filte
+                if (!doesContains(r, rules))
+                {
+                    rules.Add(r);
+                    bindDataGrid(rules);
+                }
 
                 TextBox_GrammarLeft.Text = "";
                 TextBox_GrammarRights.Text = "";
@@ -182,6 +185,22 @@ namespace GrammarToParseTable
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        /// <summary>
+        /// Simply just check the rules if they look same
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="rs"></param>
+        /// <returns></returns>
+        private bool doesContains(Rule r, List<Rule> rs)
+        {
+            foreach (Rule rule in rs)
+            {
+                if (rule.ToString() == r.ToString())
+                    return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -224,7 +243,10 @@ namespace GrammarToParseTable
                     if (/*Check if rule was not added before*/true)
                     {
                         r.Add(right);
-                        simplified_Rules.Add(new Rule(left, r));
+                        Rule newRule = new Rule(left, r);
+                        //check if the rule already exists
+                        if (!doesContains(newRule, simplified_Rules))
+                            simplified_Rules.Add(newRule);
                     }
                 }
             }
