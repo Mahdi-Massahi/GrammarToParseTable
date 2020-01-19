@@ -103,7 +103,7 @@
                         <DataGridTextColumn Binding="{Binding Production}" Header=" Production "/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="Button_Simpify" Content="Simpify" Margin="0,5,0,5" Click="Button_Simpify_Click"/>
+                <Button x:Name="Button_Simplify" Content="Simplify" Margin="0,5,0,5" Click="Button_Simplify_Click"/>
                 <DataGrid x:Name="DataGrid_SimplifiedProduction" IsReadOnly="True" Height="150" VerticalScrollBarVisibility="Visible" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>

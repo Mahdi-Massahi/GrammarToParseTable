@@ -164,11 +164,11 @@ namespace GrammarToParseTable
         }
 
         /// <summary>
-        /// Simplyfies rules
+        /// Simplifies rules
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Simpify_Click(object sender, RoutedEventArgs e)
+        private void Button_Simplify_Click(object sender, RoutedEventArgs e)
         {
             List<Rule> simplified_Rules = new List<Rule>();
 
