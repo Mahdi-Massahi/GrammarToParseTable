@@ -275,16 +275,8 @@ namespace GrammarToParseTable
         private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
         {
             ParseTable parseTable = new ParseTable(Simplify_Rules(rules));
-            Console.WriteLine("firsts:");
-            foreach (KeyValuePair<Rule, HashSet<Symbol>> entry in parseTable.firsts)
-            {
-                Console.Write(entry.Key + " : {");
-                foreach (Symbol s in entry.Value)
-                {
-                    Console.Write("{0}", s.character);
-                }
-                Console.WriteLine("}");
-            }
+            parseTable.Print_Firsts();
+            parseTable.Print_Follows();
         }
     }
 }
