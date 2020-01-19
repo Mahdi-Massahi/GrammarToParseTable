@@ -76,21 +76,25 @@ namespace GrammarToParseTable
         #endregion
 
         List<Rule> rules = new List<Rule>();
+        Rule currentSelectedRule = null;
 
         /// <summary>
         /// Adds new rule to datagrid
         /// </summary>
         /// <param name="r"></param>
-        void bindDataGrid(Rule r)
+        void bindDataGrid(List<Rule> rs)
         {
-            DataGrid_Production.Items.Add(new production() { Number = rules.Count(), Production = r.ToString() });
+            DataGrid_Production.Items.Clear();
+            int i = 1;
+            foreach (Rule rule in rs)
+                DataGrid_Production.Items.Add(new production() { Number = i++, Production = rule.ToString() });
         }
 
         /// <summary>
         /// Clears the datagrid and adds rules to it
         /// </summary>
         /// <param name="rs">List of rules</param>
-        void bindDataGrid(List<Rule> rs)
+        void bindDataGrid_simplyfied(List<Rule> rs)
         {
             DataGrid_SimplifiedProduction.Items.Clear();
             int i = 1;
@@ -98,10 +102,27 @@ namespace GrammarToParseTable
                 DataGrid_SimplifiedProduction.Items.Add(new production() { Number = i++, Production = rule.ToString() });
         }
 
+        /// <summary>
+        /// This class is only for UI element: Datagrid - nothing else
+        /// </summary>
         class production
         {
             public int Number { get; set; }
             public String Production { get; set; }
+        }
+
+        /// <summary>
+        /// No multiple characters in left side
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_GrammarLeft_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBox_GrammarLeft.Text != "")
+            {
+                TextBox_GrammarLeft.Text = TextBox_GrammarLeft.Text[0].ToString();
+                TextBox_GrammarLeft.CaretIndex = TextBox_GrammarLeft.Text.Length;
+            }
         }
 
         /// <summary>
@@ -114,53 +135,75 @@ namespace GrammarToParseTable
             Nonterminal left = null;
             List<List<Symbol>> rights = new List<List<Symbol>>();
 
-            // Handeling LeftSide
-            if (TextBox_GrammarLeft.Text != "")
-                if (TextBox_GrammarLeft.Text.ToCharArray().Length > 1)
-                    throw new Exception("Left value cannot have more than one symbol.");
-                else
-                    left = new Nonterminal(TextBox_GrammarLeft.Text.ToCharArray()[0]);
-            else
-                throw new Exception("Value cannot be null.");
-
-            // Handeling RightSide
-            if (TextBox_GrammarRights.Text != "")
+            try
             {
-                List<Symbol> symbols = new List<Symbol>();
+                // Handeling LeftSide
+                if (TextBox_GrammarLeft.Text != "")
+                    if (TextBox_GrammarLeft.Text.ToCharArray().Length > 1)
+                        throw new Exception("Left value cannot have more than one symbol.");
+                    else
+                        left = new Nonterminal(TextBox_GrammarLeft.Text.ToCharArray()[0]);
+                else
+                    throw new Exception("Value cannot be null.");
 
-                String[] vars = TextBox_GrammarRights.Text.Replace(" ", string.Empty).Replace("\t", string.Empty).Split('|');
-                foreach (String var in vars)
+                // Handeling RightSide
+                if (TextBox_GrammarRights.Text != "")
                 {
-                    if (var != "")
+                    List<Symbol> symbols = new List<Symbol>();
+
+                    String[] vars = TextBox_GrammarRights.Text.Replace(" ", string.Empty).Replace("\t", string.Empty).Split('|');
+                    foreach (String var in vars)
                     {
-                        foreach (char symbol in var)
+                        if (var != "")
                         {
-                            if (Char.IsUpper(symbol))
-                                symbols.Add(new Nonterminal(symbol));
-                            else
-                                symbols.Add(new Terminal(symbol));
+                            foreach (char symbol in var)
+                            {
+                                if (Char.IsUpper(symbol))
+                                    symbols.Add(new Nonterminal(symbol));
+                                else
+                                    symbols.Add(new Terminal(symbol));
+                            }
+                            rights.Add(symbols);
+                            symbols = new List<Symbol>();
                         }
-                        rights.Add(symbols);
-                        symbols = new List<Symbol>();
                     }
                 }
-            }
-            else
-                throw new Exception("Value cannot be null.");
+                else
+                    throw new Exception("Value cannot be null.");
 
-            Rule r = new Rule(left, rights);
-            rules.Add(r);
-            bindDataGrid(r);
+                Rule r = new Rule(left, rights);
+                rules.Add(r);
+                bindDataGrid(rules);
+
+                TextBox_GrammarLeft.Text = "";
+                TextBox_GrammarRights.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        /// <summary>
+        /// Adds an 'epsilon' character to grammer right side
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_AddEpsilonToGrammar_Click(object sender, RoutedEventArgs e)
         {
             TextBox_GrammarRights.Text += " ε ";
+            TextBox_GrammarRights.CaretIndex = TextBox_GrammarRights.Text.Length;
         }
 
+        /// <summary>
+        /// Adds an 'or' character to grammer right side
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_AddOrToGrammer_Click(object sender, RoutedEventArgs e)
         {
             TextBox_GrammarRights.Text += " | ";
+            TextBox_GrammarRights.CaretIndex = TextBox_GrammarRights.Text.Length;
         }
 
         /// <summary>
@@ -168,7 +211,7 @@ namespace GrammarToParseTable
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Simplify_Click(object sender, RoutedEventArgs e)
+        private List<Rule> Simplify_Rules(List<Rule> rules)
         {
             List<Rule> simplified_Rules = new List<Rule>();
 
@@ -186,16 +229,62 @@ namespace GrammarToParseTable
                 }
             }
 
-            rules.Clear();
-            rules = simplified_Rules;
-            bindDataGrid(rules);
+            bindDataGrid_simplyfied(simplified_Rules);
+            return simplified_Rules;
         }
 
+        /// <summary>
+        /// Check to delete a rule
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGrid_Production_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            production p = null;
+            try
+            {
+                p = (production)DataGrid_Production.SelectedItem;
+                if (e.Key == Key.Delete && p != null)
+                {
+                    if (MessageBox.Show(
+                            "You are about to delete the folloing rule.\n" +
+                            p.Production + "\n" +
+                            "Do you want to permanently delete it?",
+                            "Delete a rule",
+                            MessageBoxButton.YesNo,
+                            MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        rules.RemoveAt(p.Number - 1);
+                        bindDataGrid(rules);
+                        DataGrid_SimplifiedProduction.Items.Clear();
+                        // REORDER RULES!
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Generate parse table; calculate firsts and follows.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
         {
-            ParseTable parseTable = new ParseTable(rules);
-            parseTable.Print_Firsts();
-            parseTable.Print_Follows();
+            ParseTable parseTable = new ParseTable(Simplify_Rules(rules));
+            Console.WriteLine("firsts:");
+            foreach (KeyValuePair<Rule, HashSet<Symbol>> entry in parseTable.firsts)
+            {
+                Console.Write(entry.Key + " : {");
+                foreach (Symbol s in entry.Value)
+                {
+                    Console.Write("{0}", s.character);
+                }
+                Console.WriteLine("}");
+            }
         }
     }
 }
