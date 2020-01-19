@@ -21,13 +21,50 @@ namespace GrammarToParseTable.Grammer
             {
                 firsts[r] = First.FindFirst(rules, r);
             }
-            foreach (Rule r in rules)
+            follows = Follow.FindAllFollows(rules, firsts);
+        }
+
+        public void Print_Firsts()
+        {
+            Console.WriteLine("firsts:");
+            foreach (KeyValuePair<Rule, HashSet<Symbol>> entry in firsts)
             {
-                follows[r] = Follow.FindFollow(rules, firsts, r);
+                Console.Write(entry.Key + " : {");
+                foreach (Symbol s in entry.Value)
+                {
+                    if (s.character == 'ε')
+                    {
+                        Console.Write("{0}", "Eps. ");
+                    }
+                    else
+                    {
+                        Console.Write("{0}", s.character);
+                    }
+                }
+                Console.WriteLine("}");
             }
         }
 
-        
+        public void Print_Follows()
+        {
+            Console.WriteLine("follows:");
+            foreach (KeyValuePair<Rule, HashSet<Symbol>> entry in follows)
+            {
+                Console.Write(entry.Key + " : {");
+                foreach (Symbol s in entry.Value)
+                {
+                    if (s.character == 'ε')
+                    {
+                        Console.Write("{0}", "Eps. ");
+                    }
+                    else
+                    {
+                        Console.Write("{0}", s.character);
+                    }
+                }
+                Console.WriteLine("}");
+            }
+        }
 
     }
 }
