@@ -1,4 +1,5 @@
 ﻿using GrammarToParseTable.Classes;
+using GrammarToParseTable.Grammer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -192,7 +193,18 @@ namespace GrammarToParseTable
 
         private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
         {
-            // you've got the rules
+            ParseTable parseTable = new ParseTable(rules);
+            Console.WriteLine("firsts:");
+            foreach (KeyValuePair<Rule, HashSet<Symbol>> entry in parseTable.firsts)
+            {
+                Console.Write(entry.Key + " : {");
+                foreach (Symbol s in entry.Value)
+                {
+                    Console.Write("{0}", s.character);
+                }
+                Console.WriteLine("}");
+            }           
+
         }
     }
 }

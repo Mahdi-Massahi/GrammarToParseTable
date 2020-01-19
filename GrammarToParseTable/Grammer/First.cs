@@ -10,39 +10,54 @@ namespace GrammarToParseTable.Grammer
     class First
     {
 
-        private static List<Symbol> visited_nonterminals = new List<Symbol>();
+        private static List<Rule> visited_rules = new List<Rule>();
 
-        public static Symbol FindFirst(List<Rule> rules, Rule rule)
+        public static HashSet<Symbol> FindFirst(List<Rule> rules, Rule rule)
         {
-            Symbol symbol;
+            HashSet<Symbol> result = new HashSet<Symbol>();
             if (rule.right.Count == 0)
             {
-                throw new Exception("Syntax Error - Empty right side!");
+                throw new Exception("Input Error - Empty right side!");
             }
             else if (rule.right[0].Count == 0)
             {
-                symbol = null;
+                result.Add(null);
             }
-            if (rule.right[0][0] is Terminal)
+            Symbol first_rSymbol = rule.right[0][0];
+            if (first_rSymbol is Terminal)
             {
-                symbol = rule.right[0][0];
+                result.Add(first_rSymbol);
             }
-            else if (rule.right[0][0] is Nonterminal)
+            else if (first_rSymbol is Nonterminal)
             {
-                if (visited_nonterminals.Contains(rule.right[0][0])) // It's in a loop!
+                if (visited_rules.Contains(rule)) // It's in a loop!
                 {
-                    throw new Exception("Error - Nonterminals in a loop! Fix the grammar.");
+                    throw new Exception("Error - Nonterminals in a loop.");
                 }
-                visited_nonterminals.Add(rule.right[0][0]);
-                symbol = FindFirst(rules, rule);
+                visited_rules.Add(rule);
+                // find the next target rules:
+                List<Rule> next_rules = new List<Rule>();
+                foreach (Rule r in rules)
+                {
+                    if (r.left.character == first_rSymbol.character && !visited_rules.Contains(r))
+                    {
+                        next_rules.Add(r);   
+                    }
+                }
+                // get results for each:
+                foreach (Rule r in next_rules)
+                {
+                    HashSet<Symbol> subresults = FindFirst(rules, r);
+                    result.UnionWith(subresults);
+                }              
             }
             else
             {
                 throw new Exception("Error - unexpected First");
             }
 
-            visited_nonterminals.Clear();
-            return symbol;
+            visited_rules.Clear();
+            return result;
         }
 
     

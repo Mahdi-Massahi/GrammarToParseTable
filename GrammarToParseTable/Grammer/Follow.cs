@@ -9,7 +9,7 @@ namespace GrammarToParseTable.Grammer
 {
     class Follow
     {
-        public static Symbol FindFollow(List<Rule> rules, Dictionary<Rule, Symbol> firsts, Rule rule)
+        public static HashSet<Symbol> FindFollow(List<Rule> rules, Dictionary<Rule, HashSet<Symbol>> firsts, Rule rule)
         {
             return null; //TODO
         }       

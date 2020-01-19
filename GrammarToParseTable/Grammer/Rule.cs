@@ -8,6 +8,7 @@ namespace GrammarToParseTable.Classes
 {
     public class Rule
     {
+        public int id { private set; get; }
         public Nonterminal left { private set; get; }
         public List<List<Symbol>> right { private set; get; }
 
