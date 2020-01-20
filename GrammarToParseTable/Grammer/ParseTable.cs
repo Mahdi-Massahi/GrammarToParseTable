@@ -107,9 +107,11 @@ namespace GrammarToParseTable.Grammer
             String data = "{ ";
 
             foreach (Symbol symbol in set)
-                data += symbol.character.ToString() + " ,";
+                data += symbol.character.ToString() + ", ";
+            if (set.Count == 0)
+                data += " ";
 
-            data = data.Substring(0, data.Length-1) + "}";
+            data = data.Substring(0, data.Length-2) + " }";
             return data;
         }
 

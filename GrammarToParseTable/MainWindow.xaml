@@ -32,7 +32,7 @@
                 <!--Title-->
                 <Label 
                 x:Name="title_Window"
-                Content="Grammar To Parse Table (v1.1)" 
+                Content="Grammar To Parse Table (v1.2)" 
                 Grid.Column="1" 
                 Background="Transparent" 
                 VerticalAlignment="Center" 
@@ -92,7 +92,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TextBox_GrammarLeft" Width="25" TextChanged="TextBox_GrammarLeft_TextChanged"/>
                     <Label Content=" ➝ "/>
-                    <TextBox x:Name="TextBox_GrammarRights" Width="100"/>
+                    <TextBox x:Name="TextBox_GrammarRights" Width="100" PreviewKeyDown="TextBox_GrammarRights_PreviewKeyDown"/>
                     <Button x:Name="Button_AddOrToGrammer" Content="|" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0" Click="Button_AddOrToGrammer_Click" Focusable="False"/>
                     <Button x:Name="Button_AddEpsilonToGrammar" Content="ε" Width="24" Margin="2,0,0,0" Padding="1,-4,1,0" Click="Button_AddEpsilonToGrammar_Click" Focusable="False"/>
                     <Button x:Name="Button_AddNewGrammar" Content="Add" Width="50" Margin="2,0,0,0" Click="Button_AddNewGrammar_Click"/>

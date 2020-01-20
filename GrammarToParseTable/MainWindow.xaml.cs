@@ -121,6 +121,7 @@ namespace GrammarToParseTable
             {
                 TextBox_GrammarLeft.Text = TextBox_GrammarLeft.Text[0].ToString();
                 TextBox_GrammarLeft.CaretIndex = TextBox_GrammarLeft.Text.Length;
+                TextBox_GrammarRights.Focus();
             }
         }
 
@@ -131,59 +132,86 @@ namespace GrammarToParseTable
         /// <param name="e"></param>
         private void Button_AddNewGrammar_Click(object sender, RoutedEventArgs e)
         {
-            Nonterminal left = null;
-            List<List<Symbol>> rights = new List<List<Symbol>>();
-
-            try
+            // Check if to input the sample grammar
+            if (TextBox_GrammarRights.Text.ToLower() == "sample" && TextBox_GrammarLeft.Text == "")
             {
-                // Handeling LeftSide
-                if (TextBox_GrammarLeft.Text != "")
-                    if (TextBox_GrammarLeft.Text.ToCharArray().Length > 1)
-                        throw new Exception("Left value cannot have more than one symbol.");
-                    else
-                        left = new Nonterminal(TextBox_GrammarLeft.Text.ToCharArray()[0]);
-                else
-                    throw new Exception("Value cannot be null.");
+                // Insert the sample grammar
+                dataGrid_FiFoTable.Items.Clear();
+                bindDataGrid(new Sample().rules);
+                TextBox_GrammarRights.Text = "";
+                Button_GenerateParseTable.Focus();
+            }
+            else
+            {
+                Nonterminal left = null;
+                List<List<Symbol>> rights = new List<List<Symbol>>();
 
-                // Handeling RightSide
-                if (TextBox_GrammarRights.Text != "")
+                try
                 {
-                    List<Symbol> symbols = new List<Symbol>();
+                    // Handeling LeftSide
+                    if (TextBox_GrammarLeft.Text != "")
+                        if (TextBox_GrammarLeft.Text.ToCharArray().Length > 1)
+                            throw new Exception("Left value cannot have more than one symbol.");
+                        else
+                            left = new Nonterminal(TextBox_GrammarLeft.Text.ToCharArray()[0]);
+                    else
+                        throw new Exception("Value cannot be null.");
 
-                    String[] vars = TextBox_GrammarRights.Text.Replace(" ", string.Empty).Replace("\t", string.Empty).Split('|');
-                    foreach (String var in vars)
+                    // Handeling RightSide
+                    if (TextBox_GrammarRights.Text != "")
                     {
-                        if (var != "")
+                        List<Symbol> symbols = new List<Symbol>();
+
+                        String[] vars = TextBox_GrammarRights.Text.Replace(" ", string.Empty).Replace("\t", string.Empty).Split('|');
+                        foreach (String var in vars)
                         {
-                            foreach (char symbol in var)
+                            if (var != "")
                             {
-                                if (Char.IsUpper(symbol))
-                                    symbols.Add(new Nonterminal(symbol));
-                                else
-                                    symbols.Add(new Terminal(symbol));
+                                foreach (char symbol in var)
+                                {
+                                    if (Char.IsUpper(symbol))
+                                        symbols.Add(new Nonterminal(symbol));
+                                    else
+                                        symbols.Add(new Terminal(symbol));
+                                }
+                                rights.Add(symbols);
+                                symbols = new List<Symbol>();
                             }
-                            rights.Add(symbols);
-                            symbols = new List<Symbol>();
                         }
                     }
-                }
-                else
-                    throw new Exception("Value cannot be null.");
+                    else
+                        throw new Exception("Value cannot be null.");
 
-                Rule r = new Rule(left, rights);
-                // apply a simple duplex checking filte
-                if (!doesContains(r, rules))
+                    Rule r = new Rule(left, rights);
+                    // apply a simple duplex checking filte
+                    if (!doesContains(r, rules))
+                    {
+                        rules.Add(r);
+                        bindDataGrid(rules);
+                    }
+
+                    TextBox_GrammarLeft.Text = "";
+                    TextBox_GrammarRights.Text = "";
+                }
+                catch (Exception ex)
                 {
-                    rules.Add(r);
-                    bindDataGrid(rules);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
-                TextBox_GrammarLeft.Text = "";
-                TextBox_GrammarRights.Text = "";
             }
-            catch (Exception ex)
+        }
+
+        /// <summary>
+        /// On the right side text box press enter to add the rule
+        /// And also focus to left text box then
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_GrammarRights_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Button_AddNewGrammar_Click(null, null);
+                TextBox_GrammarLeft.Focus();
             }
         }
 
