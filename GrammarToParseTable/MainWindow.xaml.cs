@@ -290,15 +290,22 @@ namespace GrammarToParseTable
         }
 
         /// <summary>
-        /// Generate parse table; calculate firsts and follows.
+        /// Generate parse table; calculate firsts and follows
+        /// And binds datum with Fio datagrid
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
         {
             ParseTable parseTable = new ParseTable(Simplify_Rules(rules));
-            parseTable.Print_Firsts();
-            parseTable.Print_Follows();
+            //parseTable.Print_Firsts();
+            //parseTable.Print_Follows();
+
+            dataGrid_FiFoTable.Items.Clear();
+
+            List<ParseTable.FiFoItem> items = parseTable.getFiFoItems();
+            foreach (ParseTable.FiFoItem item in items)
+                dataGrid_FiFoTable.Items.Add(item);
         }
     }
 }

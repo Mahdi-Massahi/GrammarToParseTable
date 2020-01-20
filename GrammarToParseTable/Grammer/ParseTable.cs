@@ -9,7 +9,6 @@ namespace GrammarToParseTable.Grammer
 {
     class ParseTable
     {
-
         public Dictionary<Rule, HashSet<Symbol>> firsts { get; private set; }
         public Dictionary<Rule, HashSet<Symbol>> follows { get; private set; }
 
@@ -64,6 +63,54 @@ namespace GrammarToParseTable.Grammer
                 }
                 Console.WriteLine("}");
             }
+        }
+
+        /// <summary>
+        /// Returns a list of first and follow items to be used in datagrid
+        /// </summary>
+        /// <returns>A list of FiFoItems</returns>
+        public List<FiFoItem> getFiFoItems()
+        {
+            List<FiFoItem> data = new List<FiFoItem>();
+            for (int i = 0; i < firsts.Count; i++)
+            {
+                Rule r = firsts.ElementAt(i).Key;
+                data.Add(new FiFoItem()
+                {
+                    Number = i+1,
+                    Production = r.ToString(),
+                    First = SymbolHashSetToString(firsts[r]),
+                    Follow = SymbolHashSetToString(follows[r])
+                });
+            }
+            return data;
+        }
+
+        /// <summary>
+        /// This class is only for UI element: Datagrid - nothing else
+        /// </summary>
+        public class FiFoItem
+        {
+            public int Number { get; internal set;}
+            public string Production { get; internal set;}
+            public string First { get; internal set;}
+            public string Follow { get; internal set; }
+        }
+
+        /// <summary>
+        /// Converts the HashSet<Symbol> set to String in bakets
+        /// </summary>
+        /// <param name="set"></param>
+        /// <returns></returns>
+        private String SymbolHashSetToString(HashSet<Symbol> set)
+        {
+            String data = "{ ";
+
+            foreach (Symbol symbol in set)
+                data += symbol.character.ToString() + " ,";
+
+            data = data.Substring(0, data.Length-1) + "}";
+            return data;
         }
 
     }

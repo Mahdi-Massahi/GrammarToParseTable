@@ -8,7 +8,7 @@
         Style="{StaticResource DarkTheme}"
         Title="MainWindow" Height="445" Width="525">
     <Window.Resources>
-       
+
     </Window.Resources>
     <WindowChrome.WindowChrome>
         <WindowChrome 
@@ -86,7 +86,7 @@
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackPanel>
+            <StackPanel Grid.Column="0">
                 <Label Content="- Insert rules in order"/>
                 <Label Content="(uppercase as Terminal and lowercase as Nonterminal)" FontSize="8" Margin="8,-12,0,0"/>
                 <StackPanel Orientation="Horizontal">
@@ -110,6 +110,17 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button x:Name="Button_GenerateParseTable" Content="Generate parse table" Margin="0,5,0,0" Click="Button_GenerateParseTable_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Label Content="- Firsts and Follows Table"/>
+                <DataGrid x:Name="dataGrid_FiFoTable" Height="179" Margin="5,12,0,0" VerticalScrollBarVisibility="Visible">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
+                        <DataGridTextColumn Binding="{Binding Production}" Header=" Rule "/>
+                        <DataGridTextColumn Binding="{Binding First}" Header=" First "/>
+                        <DataGridTextColumn Binding="{Binding Follow}" Header=" Follow "/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
         </Grid>
         <!--#endregion-->
