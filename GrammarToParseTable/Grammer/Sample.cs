@@ -51,7 +51,7 @@ namespace GrammarToParseTable.Grammer
 
             symbols.Add(new Nonterminal('C'));
             symbols.Add(new Terminal('b'));
-            symbols.Add(new Terminal('b'));
+            symbols.Add(new Nonterminal('B'));
             rights.Add(new List<Symbol>(symbols));
             symbols.Clear();
 

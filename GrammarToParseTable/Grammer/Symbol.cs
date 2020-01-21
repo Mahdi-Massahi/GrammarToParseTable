@@ -18,5 +18,19 @@ namespace GrammarToParseTable.Classes
         {
             character = ch;
         }
+
+        public override int GetHashCode()
+        {
+            return character;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Symbol)
+            {
+                return character == ((Symbol)obj).character;
+            }
+            return false;
+        }
     }
 }

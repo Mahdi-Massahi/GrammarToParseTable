@@ -137,7 +137,8 @@ namespace GrammarToParseTable
             {
                 // Insert the sample grammar
                 dataGrid_FiFoTable.Items.Clear();
-                bindDataGrid(new Sample().rules);
+                rules = new Sample().rules;
+                bindDataGrid(rules);
                 TextBox_GrammarRights.Text = "";
                 Button_GenerateParseTable.Focus();
             }
@@ -307,6 +308,7 @@ namespace GrammarToParseTable
                         rules.RemoveAt(p.Number - 1);
                         bindDataGrid(rules);
                         DataGrid_SimplifiedProduction.Items.Clear();
+                        dataGrid_FiFoTable.Items.Clear();
                         // REORDER RULES!
                     }
                 }
