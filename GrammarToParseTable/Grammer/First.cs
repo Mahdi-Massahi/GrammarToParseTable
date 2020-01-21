@@ -16,16 +16,18 @@ namespace GrammarToParseTable.Grammer
         {
 
             HashSet<Symbol> firsts = new HashSet<Symbol>();
-            
+           
+            visited_rules.Add(rule);
+
             foreach (List<Symbol> lst in rule.right)
             {
+               
                 for (int i = 0; i < lst.Count; ++i)
                 {
                     Symbol sym = lst.ElementAt(i);
                     if (sym is Terminal)
                     {
                         firsts.Add(sym);
-                        break;
                     }
                     else if (sym is Nonterminal)
                     {
@@ -35,7 +37,10 @@ namespace GrammarToParseTable.Grammer
                         {
                             if (r.left.character == sym.character)
                             {
-                                sub_firsts.UnionWith(FindFirst(rules, r));
+                                if (!visited_rules.Contains(r))
+                                {
+                                    sub_firsts.UnionWith(FindFirst(rules, r));
+                                }
                             }
                         }
                         if (sub_firsts.Contains(new Symbol('ε')))
@@ -78,6 +83,7 @@ namespace GrammarToParseTable.Grammer
                     }
                 }
             }
+
 
 
             return firsts;

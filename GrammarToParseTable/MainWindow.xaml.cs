@@ -328,8 +328,8 @@ namespace GrammarToParseTable
         private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
         {
             ParseTable parseTable = new ParseTable(Simplify_Rules(rules));
-            //parseTable.Print_Firsts();
-            //parseTable.Print_Follows();
+            parseTable.Print_Firsts();
+            parseTable.Print_Follows();
 
             dataGrid_FiFoTable.Items.Clear();
 
