@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GrammarToParseTable"
         mc:Ignorable="d"
         Style="{StaticResource DarkTheme}"
-        Title="MainWindow" Height="445" Width="525">
+        Title="MainWindow" Height="445" Width="700">
     <Window.Resources>
 
     </Window.Resources>
@@ -21,7 +21,7 @@
         <!--Title Bar-->
         <!--#region Title Bar-->
         <Border Margin="0" x:Name="Border_Window">
-            <Grid Height="32" VerticalAlignment="Top"  MouseDown="title_Window_MouseDown" Margin="0,0,-0.4,0">
+            <Grid Height="32" VerticalAlignment="Top"  MouseDown="title_Window_MouseDown" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5"/>
                     <ColumnDefinition/>
@@ -32,7 +32,7 @@
                 <!--Title-->
                 <Label 
                 x:Name="title_Window"
-                Content="Grammar To Parse Table (v1.2)" 
+                Content="Grammar To Parse Table (v1.3)" 
                 Grid.Column="1" 
                 Background="Transparent" 
                 VerticalAlignment="Center" 
@@ -103,7 +103,7 @@
                         <DataGridTextColumn Binding="{Binding Production}" Header=" Production "/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="DataGrid_SimplifiedProduction" IsReadOnly="True" Height="150" VerticalScrollBarVisibility="Visible" >
+                <DataGrid x:Name="DataGrid_SimplifiedProduction" IsReadOnly="True" Height="150" VerticalScrollBarVisibility="Visible">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
                         <DataGridTextColumn Binding="{Binding Production}" Header=" Simpilified Production "/>
@@ -113,7 +113,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <Label Content="- Firsts and Follows Table"/>
-                <DataGrid x:Name="dataGrid_FiFoTable" Height="179" Margin="5,12,0,0" VerticalScrollBarVisibility="Visible">
+                <DataGrid x:Name="dataGrid_FiFoTable" Height="179" Margin="5,12,0,0" VerticalScrollBarVisibility="Visible" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
                         <DataGridTextColumn Binding="{Binding Production}" Header=" Rule "/>
