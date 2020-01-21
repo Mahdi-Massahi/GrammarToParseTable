@@ -115,5 +115,15 @@ namespace GrammarToParseTable.Grammer
             return data;
         }
 
+
+        public void getTerminals(List<Rule> rules)
+        {
+            List<Nonterminal> nonterminals = new List<Nonterminal>();
+            foreach (Rule r in rules)
+            {
+                nonterminals.Add(new Nonterminal(r.left.character));
+            }
+        }
+
     }
 }

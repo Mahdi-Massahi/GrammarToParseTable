@@ -36,70 +36,125 @@ namespace GrammarToParseTable.Grammer
         /// <summary>
         /// Creates a sample List<Rule>
         /// </summary>
-        public Sample()
+        public Sample(int i)
         {
             List<List<Symbol>> rights = new List<List<Symbol>>();
             List<Symbol> symbols = new List<Symbol>();
             rules = new List<Rule>();
 
-            // 1st Rule
-            symbols.Add(new Nonterminal('A'));
-            symbols.Add(new Nonterminal('C'));
-            symbols.Add(new Nonterminal('B'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+            switch (i)
+            {
+                case 1:
+                    #region Sample2
+                    // 1st Rule
+                    symbols.Add(new Nonterminal('E'));
+                    symbols.Add(new Terminal('+'));
+                    symbols.Add(new Nonterminal('T'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            symbols.Add(new Nonterminal('C'));
-            symbols.Add(new Terminal('b'));
-            symbols.Add(new Terminal('b'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    symbols.Add(new Nonterminal('T'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            symbols.Add(new Nonterminal('B'));
-            symbols.Add(new Terminal('a'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    rules.Add(new Rule(new Nonterminal('E'), new List<List<Symbol>>(rights)));
+                    rights.Clear();
 
-            rules.Add(new Rule(new Nonterminal('S'), new List<List<Symbol>>(rights)));
-            rights.Clear();
+                    // 2nd Rule
+                    symbols.Add(new Nonterminal('T'));
+                    symbols.Add(new Terminal('*'));
+                    symbols.Add(new Nonterminal('F'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            // 2nd Rule
-            symbols.Add(new Terminal('d'));
-            symbols.Add(new Terminal('a'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    symbols.Add(new Nonterminal('F'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            symbols.Add(new Nonterminal('B'));
-            symbols.Add(new Nonterminal('C'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    rules.Add(new Rule(new Nonterminal('T'), new List<List<Symbol>>(rights)));
+                    rights.Clear();
 
-            rules.Add(new Rule(new Nonterminal('A'), new List<List<Symbol>>(rights)));
-            rights.Clear();
+                    // 3rd Rule
+                    symbols.Add(new Terminal('('));
+                    symbols.Add(new Nonterminal('E'));
+                    symbols.Add(new Terminal(')'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            // 3rd Rule
-            symbols.Add(new Terminal('g'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    symbols.Add(new Terminal('i'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            symbols.Add(new Terminal('ε'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    rules.Add(new Rule(new Nonterminal('F'), new List<List<Symbol>>(rights)));
+                    rights.Clear();
+                    #endregion
+                    break;
 
-            rules.Add(new Rule(new Nonterminal('B'), new List<List<Symbol>>(rights)));
-            rights.Clear();
+                default:
+                    #region Sample1
+                    // 1st Rule
+                    symbols.Add(new Nonterminal('A'));
+                    symbols.Add(new Nonterminal('C'));
+                    symbols.Add(new Nonterminal('B'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            // 4th Rule
-            symbols.Add(new Terminal('h'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    symbols.Add(new Nonterminal('C'));
+                    symbols.Add(new Terminal('b'));
+                    symbols.Add(new Terminal('b'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            symbols.Add(new Terminal('ε'));
-            rights.Add(new List<Symbol>(symbols));
-            symbols.Clear();
+                    symbols.Add(new Nonterminal('B'));
+                    symbols.Add(new Terminal('a'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
 
-            rules.Add(new Rule(new Nonterminal('C'), new List<List<Symbol>>(rights)));
+                    rules.Add(new Rule(new Nonterminal('S'), new List<List<Symbol>>(rights)));
+                    rights.Clear();
+
+                    // 2nd Rule
+                    symbols.Add(new Terminal('d'));
+                    symbols.Add(new Terminal('a'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
+
+                    symbols.Add(new Nonterminal('B'));
+                    symbols.Add(new Nonterminal('C'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
+
+                    rules.Add(new Rule(new Nonterminal('A'), new List<List<Symbol>>(rights)));
+                    rights.Clear();
+
+                    // 3rd Rule
+                    symbols.Add(new Terminal('g'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
+
+                    symbols.Add(new Terminal('ε'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
+
+                    rules.Add(new Rule(new Nonterminal('B'), new List<List<Symbol>>(rights)));
+                    rights.Clear();
+
+                    // 4th Rule
+                    symbols.Add(new Terminal('h'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
+
+                    symbols.Add(new Terminal('ε'));
+                    rights.Add(new List<Symbol>(symbols));
+                    symbols.Clear();
+
+                    rules.Add(new Rule(new Nonterminal('C'), new List<List<Symbol>>(rights)));
+                    #endregion
+                    break;
+            }
         }
+
+
 
         /// <summary>
         /// Returns the Sample

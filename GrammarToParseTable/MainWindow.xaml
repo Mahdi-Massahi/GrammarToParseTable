@@ -121,6 +121,9 @@
                         <DataGridTextColumn Binding="{Binding Follow}" Header=" Follow "/>
                     </DataGrid.Columns>
                 </DataGrid>
+                <DataGrid x:Name="dataGrid_ParsTable" Margin="5,5,-0.4,5" Height="179" VerticalScrollBarVisibility="Visible">
+
+                </DataGrid>
             </StackPanel>
         </Grid>
         <!--#endregion-->

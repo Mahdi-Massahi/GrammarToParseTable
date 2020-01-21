@@ -133,11 +133,13 @@ namespace GrammarToParseTable
         private void Button_AddNewGrammar_Click(object sender, RoutedEventArgs e)
         {
             // Check if to input the sample grammar
-            if (TextBox_GrammarRights.Text.ToLower() == "sample" && TextBox_GrammarLeft.Text == "")
+            if (TextBox_GrammarRights.Text.ToLower().Contains("sample") && TextBox_GrammarLeft.Text == "")
             {
                 // Insert the sample grammar
                 dataGrid_FiFoTable.Items.Clear();
-                bindDataGrid(new Sample().rules);
+                int i = TextBox_GrammarRights.Text.Contains("1") ? 1 : 0;
+                rules = new Sample(i).rules;
+                bindDataGrid(rules);
                 TextBox_GrammarRights.Text = "";
                 Button_GenerateParseTable.Focus();
             }
@@ -334,6 +336,8 @@ namespace GrammarToParseTable
             List<ParseTable.FiFoItem> items = parseTable.getFiFoItems();
             foreach (ParseTable.FiFoItem item in items)
                 dataGrid_FiFoTable.Items.Add(item);
+
+            
         }
     }
 }
