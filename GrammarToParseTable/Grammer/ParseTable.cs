@@ -143,13 +143,14 @@ namespace GrammarToParseTable.Grammer
         }
 
 
-        public void getTerminals(List<Rule> rules)
+        public List<Terminal> getTerminals(List<Rule> rules)
         {
-            List<Nonterminal> nonterminals = new List<Nonterminal>();
+            List<Terminal> nonterminals = new List<Terminal>();
             foreach (Rule r in rules)
             {
-                nonterminals.Add(new Nonterminal(r.left.character));
+                nonterminals.Add(new Terminal(r.left.character));
             }
+            return nonterminals;
         }
 
     }
