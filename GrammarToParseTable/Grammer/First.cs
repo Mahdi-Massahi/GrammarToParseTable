@@ -14,53 +14,75 @@ namespace GrammarToParseTable.Grammer
 
         public static HashSet<Symbol> FindFirst(List<Rule> rules, Rule rule)
         {
-            HashSet<Symbol> result = new HashSet<Symbol>();
-            if (rule.right.Count == 0)
+
+            HashSet<Symbol> firsts = new HashSet<Symbol>();
+            
+            foreach (List<Symbol> lst in rule.right)
             {
-                throw new Exception("Input Error - Empty right side!");
-            }
-            else if (rule.right[0].Count == 0)
-            {
-                result.Add(null);
-            }
-            Symbol first_rSymbol = rule.right[0][0];
-            if (first_rSymbol is Terminal)
-            {
-                result.Add(first_rSymbol);
-            }
-            else if (first_rSymbol is Nonterminal)
-            {
-                if (visited_rules.Contains(rule)) // It's in a loop!
+                for (int i = 0; i < lst.Count; ++i)
                 {
-                    throw new Exception("Error - Nonterminals in a loop.");
-                }
-                visited_rules.Add(rule);
-                // find the next target rules:
-                List<Rule> next_rules = new List<Rule>();
-                foreach (Rule r in rules)
-                {
-                    if (r.left.character == first_rSymbol.character && !visited_rules.Contains(r))
+                    Symbol sym = lst.ElementAt(i);
+                    if (sym is Terminal)
                     {
-                        next_rules.Add(r);   
+                        firsts.Add(sym);
+                        break;
+                    }
+                    else if (sym is Nonterminal)
+                    {
+                        // for every rule with sym in the left side:                        
+                        HashSet<Symbol> sub_firsts = new HashSet<Symbol>();
+                        foreach (Rule r in rules)
+                        {
+                            if (r.left.character == sym.character)
+                            {
+                                sub_firsts.UnionWith(FindFirst(rules, r));
+                            }
+                        }
+                        if (sub_firsts.Contains(new Symbol('ε')))
+                        {
+                            while (i + 1 < lst.Count)
+                            {
+                                if (sub_firsts.Contains(new Symbol('ε')))
+                                {
+                                    sub_firsts.Remove(new Symbol('ε')); // omit the epsilon if there exist other symbols further
+                                    i++;
+                                    Symbol next_sym = lst.ElementAt(i);
+                                    if (next_sym is Terminal)
+                                    {
+                                        sub_firsts.Add(next_sym);
+                                        break; // break the while loop if a terminal was found
+                                    }
+                                    else if (next_sym is Nonterminal)
+                                    {
+                                        foreach (Rule r in rules)
+                                        {
+                                            if (r.left.character == next_sym.character)
+                                            {
+                                                sub_firsts.UnionWith(FindFirst(rules, r));
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Error - Neither Terminal nor Nonterminal in finding first");
+                                    }
+                                }
+                            }
+
+                        }
+                        firsts.UnionWith(sub_firsts);
+                    }
+                    else
+                    {
+                        throw new Exception("Error - Neither Terminal nor Nonterminal in finding first");
                     }
                 }
-                // get results for each:
-                foreach (Rule r in next_rules)
-                {
-                    HashSet<Symbol> subresults = FindFirst(rules, r);
-                    result.UnionWith(subresults);
-                }              
-            }
-            else
-            {
-                throw new Exception("Error - unexpected First");
             }
 
-            visited_rules.Clear();
-            return result;
+
+            return firsts;
+
         }
 
-    
     }
-
 }
