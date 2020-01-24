@@ -12,86 +12,6 @@ namespace GrammarToParseTable.Grammer
         public Dictionary<char, HashSet<Symbol>> res_first { get; private set; }
         public Dictionary<char, HashSet<Symbol>> res_follow { get; private set; }
 
-        public ParseTable(List<Rule> rules)
-        {
-            Dictionary<Rule, HashSet<Symbol>>  firsts = new Dictionary<Rule, HashSet<Symbol>>();
-            Dictionary<Rule, HashSet<Symbol>>  follows = new Dictionary<Rule, HashSet<Symbol>>();
-            foreach (Rule r in rules)
-            {
-                firsts[r] = First.FindFirst(rules, r);
-            }
-            follows = Follow.FindAllFollows(rules, firsts);
-
-            // quick fix for representing the duplicates:
-            res_first = new Dictionary<char, HashSet<Symbol>>();
-            foreach (Rule r in firsts.Keys)
-            {
-                if (res_first.ContainsKey(r.left.character))
-                {
-                    res_first[r.left.character].UnionWith(firsts[r]);
-                }
-                else
-                {
-                    res_first[r.left.character] = firsts[r];
-                }
-            }
-
-            res_follow = new Dictionary<char, HashSet<Symbol>>();
-            foreach (Rule r in follows.Keys)
-            {
-                if (res_follow.ContainsKey(r.left.character))
-                {
-                    res_follow[r.left.character].UnionWith(follows[r]);
-                }
-                else
-                {
-                    res_follow[r.left.character] = follows[r];
-                }
-            }
-        }
-
-        public void Print_Firsts()
-        {
-            Console.WriteLine("firsts:");
-            foreach (KeyValuePair<char, HashSet<Symbol>> entry in res_first)
-            {
-                Console.Write(entry.Key + " : {");
-                foreach (Symbol s in entry.Value)
-                {
-                    if (s.character == 'ε')
-                    {
-                        Console.Write("{0}", "Eps. ");
-                    }
-                    else
-                    {
-                        Console.Write("{0}", s.character);
-                    }
-                }
-                Console.WriteLine("}");
-            }
-        }
-
-        public void Print_Follows()
-        {
-            Console.WriteLine("follows:");
-            foreach (KeyValuePair<char, HashSet<Symbol>> entry in res_follow)
-            {
-                Console.Write(entry.Key + " : {");
-                foreach (Symbol s in entry.Value)
-                {
-                    if (s.character == 'ε')
-                    {
-                        Console.Write("{0}", "Eps. ");
-                    }
-                    else
-                    {
-                        Console.Write("{0}", s.character);
-                    }
-                }
-                Console.WriteLine("}");
-            }
-        }
-
         /// <summary>
         /// Returns a list of first and follow items to be used in datagrid
         /// </summary>
@@ -143,13 +63,14 @@ namespace GrammarToParseTable.Grammer
         }
 
 
-        public void getTerminals(List<Rule> rules)
+        public List<Terminal> getTerminals(List<Rule> rules)
         {
-            List<Nonterminal> nonterminals = new List<Nonterminal>();
+            List<Terminal> nonterminals = new List<Terminal>();
             foreach (Rule r in rules)
             {
-                nonterminals.Add(new Nonterminal(r.left.character));
+                nonterminals.Add(new Terminal(r.left.character));
             }
+            return nonterminals;
         }
 
     }

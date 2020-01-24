@@ -327,17 +327,30 @@ namespace GrammarToParseTable
         /// <param name="e"></param>
         private void Button_GenerateParseTable_Click(object sender, RoutedEventArgs e)
         {
-            ParseTable parseTable = new ParseTable(Simplify_Rules(rules));
-            parseTable.Print_Firsts();
-            parseTable.Print_Follows();
-
             dataGrid_FiFoTable.Items.Clear();
 
-            List<ParseTable.FiFoItem> items = parseTable.getFiFoItems();
-            foreach (ParseTable.FiFoItem item in items)
-                dataGrid_FiFoTable.Items.Add(item);
+            Dictionary<Nonterminal, HashSet<Terminal>> dicFirst = First.getFirstDic(Simplify_Rules(rules));
+            Dictionary<Nonterminal, HashSet<Terminal>> dicFollow = Follow.getFollowDic(Simplify_Rules(rules));
 
-            
+            int i = 1;
+
+
+            foreach (KeyValuePair<Nonterminal, HashSet<Terminal>> row in dicFollow)
+            {
+                String terminals = "{ ";
+                foreach (Terminal nt in row.Value)
+                {
+                    terminals += nt.character.ToString() + " ,";
+                }
+                terminals = terminals.Substring(0, terminals.Length - 2) + " }";
+                dataGrid_FiFoTable.Items.Add(new ParseTable.FiFoItem()
+                {
+                    Number = i,
+                    Production = row.Key.character.ToString(),
+                    First = terminals,
+                });
+                i++;
+            }
         }
     }
 }

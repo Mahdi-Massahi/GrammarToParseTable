@@ -116,7 +116,7 @@
                 <DataGrid x:Name="dataGrid_FiFoTable" Height="179" Margin="5,12,0,0" VerticalScrollBarVisibility="Visible" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Number}" Header=" # "/>
-                        <DataGridTextColumn Binding="{Binding Production}" Header=" Rule "/>
+                        <DataGridTextColumn Binding="{Binding Production}" Header=" Symbol "/>
                         <DataGridTextColumn Binding="{Binding First}" Header=" First "/>
                         <DataGridTextColumn Binding="{Binding Follow}" Header=" Follow "/>
                     </DataGrid.Columns>
